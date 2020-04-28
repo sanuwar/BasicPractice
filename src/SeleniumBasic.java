@@ -1,24 +1,52 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumBasic {
+    @Test
+    public void method1() throws InterruptedException {
 
-    public static void main(String[] args) throws InterruptedException {
+        System.setProperty("webdriver.gecko.driver", "src/BrowserDriver/geckodriver");
 
-        System.setProperty("webdriver.chrome.driver", "src/BrowserDriver/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.gmail.com");
-        driver.manage().window().maximize();
-        driver.findElement(By.xpath("//*[@id = 'identifierId']")).sendKeys("Ami kisu pari na");
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-//       // explicit wait - to wait for the compose button to be click-able
-//       WebDriverWait wait = new WebDriverWait(driver,30); Thread.sleep(3000);
-//       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'COMPOSE')]"))); driver.close();
-//       // click on the compose button as soon as the "compose" button is visible
-//}      driver.findElement(By.xpath("//div[contains(text(),'COMPOSE')]")).click();
+            WebDriver driver = new FirefoxDriver();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.get("http://www.google.com");
+            driver.manage().window().maximize();
+            System.out.println(driver.getTitle());
+            Actions action = new Actions(driver);
+            String parent = driver.getWindowHandle();
+            WebElement imgLink = driver.findElement(By.xpath("//*[text() = 'Images']"));
+            WebElement gmLink = driver.findElement(By.xpath("//*[text() = 'Gmail']"));
 
+            action.keyDown(Keys.COMMAND).click(imgLink).keyUp(Keys.COMMAND).build().perform();
+            action.keyDown(Keys.COMMAND).click(gmLink).keyUp(Keys.COMMAND).build().perform();
+
+            Set<String> winid = driver.getWindowHandles();
+        System.out.println("Total no. of windows: "+ winid.size());
+            Iterator<String> iter = winid.iterator();
+            String tab = iter.next();
+
+            String tab1 = iter.next();
+            String tab2 = iter.next();
+            Thread.sleep(1500);
+            driver.switchTo().window(tab2);
+//        Thread.sleep(1500);
+//            driver.switchTo().window(tab1);
+//        Thread.sleep(1500);
+//            driver.switchTo().window(tab2);
+            //System.out.println(driver.getTitle());
+
+           // driver.quit();
+        }
     }
-}

@@ -5,7 +5,7 @@ public class Pyramid {
         boolean prime;
         //int n;
         //int i = 2;
-        for (int n = 1; n <= 100; n++) {
+        for (int n = 2; n <= 100; n++) {
             prime = true;
             int i = 2;
             while (i < n / 2) {
@@ -16,8 +16,10 @@ public class Pyramid {
                 i++;
             }
             if (prime)
-                System.out.println(n);
+                System.out.print(n + " ");
         }
+
+
 
     }
 }

@@ -7,7 +7,7 @@ public class HashMapExample {
         obj.put("john", 30);
         obj.put("Caleb", 32);
         obj.put("Jessi", 28);
-        System.out.println(obj);
+        System.out.println("here" + obj);
 
         for (String i: obj.keySet()){
             System.out.println(i);
