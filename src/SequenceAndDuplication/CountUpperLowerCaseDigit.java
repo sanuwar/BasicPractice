@@ -1,8 +1,10 @@
+package SequenceAndDuplication;
+
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Scanner;
 
-public class Parent {
+public class CountUpperLowerCaseDigit {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);

@@ -1,3 +1,5 @@
+package SequenceAndDuplication;
+
 import java.util.Arrays;
 
 public class DuplicateCharacter {

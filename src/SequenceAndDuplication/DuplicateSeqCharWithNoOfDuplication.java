@@ -1,3 +1,5 @@
+package SequenceAndDuplication;
+
 public class DuplicateSeqCharWithNoOfDuplication {
 
     public static void main(String[] args) {
